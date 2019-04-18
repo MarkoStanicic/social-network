@@ -1,0 +1,130 @@
+{
+	"hosting": {
+		"public": "build",
+		"headers": [
+			{
+				"source": "/service-worker.js",
+				"headers": [
+					{
+						"key": "Cache-Control",
+						"value": "no-cache"
+					}
+				]
+			},
+
+			{
+				"source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+				"headers": [
+					{
+						"key": "Access-Control-Allow-Origin",
+						"value": "*"
+					}
+				]
+			},
+			{
+				"source": "**/*.@(jpg|jpeg|gif|png)",
+				"headers": [
+					{
+						"key": "Cache-Control",
+						"value": "max-age=7200"
+					}
+				]
+			},
+			{
+				"source": "**/*.js",
+				"headers": [
+					{
+						"key": "Cache-Control",
+						"value": "no-cache"
+					}
+				]
+			}
+		],
+		"rewrites": [
+			{
+				"source": "/favicon.ico",
+				"destination": "/favicon.ico"
+			},
+			{
+				"source": "/api/login",
+				"function": "publicAuth"
+			},
+			{
+				"source": "/api/verify-reset-password",
+				"function": "publicAuth"
+			},
+			{
+				"source": "/api/user-register-token",
+				"function": "publicAuth"
+			},
+			{
+				"source": "/api/verify-email",
+				"function": "auth"
+			},
+			{
+				"source": "/api/email-verification-code",
+				"function": "publicAuth"
+			},
+			{
+				"source": "/api/email-verification",
+				"function": "auth"
+			},
+			{
+				"source": "/api/register",
+				"function": "auth"
+			},
+			{
+				"source": "/chatLangauge",
+				"function": "chatLangauge"
+			},
+			{
+				"source": "/api/update-password",
+				"function": "auth"
+			},
+			{
+				"source": "/api/verify-phone",
+				"function": "auth"
+			},
+			{
+				"source": "/api/search/post",
+				"function": "search"
+			},
+			{
+				"source": "/api/search/user",
+				"function": "search"
+			},
+			{
+				"source": "/api/admin/sync/user",
+				"function": "syncAlgolia"
+			},
+			{
+				"source": "/api/admin/sync/post",
+				"function": "syncAlgolia"
+			},
+			{
+				"source": "/api/admin/change/user",
+				"function": "syncAlgolia"
+			},
+			{
+				"source": "/api/admin/setup/user",
+				"function": "setup"
+			},
+			{
+				"source": "/createMessage",
+				"function": "createMessage"
+			},
+			{
+				"source": "/languages",
+				"function": "languages"
+			},
+			{
+				"source": "/api/sms-verification",
+				"function": "auth"
+			},
+			{
+				"source": "**",
+				"destination": "/index.html"
+			}
+		]
+	}
+}
